@@ -83,6 +83,8 @@ class Imdb
         begin
           movie.certification = (info/"a").map { |v| v.inner_html }.select { |v| v =~ /^USA:/ && v !~ /Unrated/ }.map { |v| v[/^USA:/]=''; v.strip }.first
         end
+      when "Seasons:"
+        movie.tv_show=true
       end
     end 
 
